@@ -1,6 +1,6 @@
-#cs-keyboard-logger
+# keyboardlogger
 
-**cs-keyboard-logger** is a key logger that can records keystrokes in the
+**keyboardlogger** is a key logger that can records keystrokes in the
 machine on which it was executed once. It does not require administrator
 priviliges to be executed on a computer. Once, executed it runs in the
 background, and automatically registers itself as a startup program. From
@@ -23,10 +23,10 @@ can be used to keep track of the order in which you gained your targets and time
 when they restarted their computers.
 
 
-##demo
+## demo
 
 <img src="/assets/img/0.png" width="70%"><br/>
-Start **cs-keyboard-logger**.
+Start **keyboardlogger**.
 <br/><br/>
 
 
@@ -73,4 +73,3 @@ Keystrokes are saved as queues at [iron.io](http://iron.io).
 <img src="/assets/img/9.png" width="70%"><br/>
 `<username>-log` contains keystrokes in readable text format.
 <br/><br/>
-
