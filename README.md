@@ -1,6 +1,6 @@
-# keyboardlogger
+# KeyLog
 
-**keyboardlogger** is a key logger that can records keystrokes in the
+**KeyLog** is a key logger that can records keystrokes in the
 machine on which it was executed once. It does not require administrator
 priviliges to be executed on a computer. Once, executed it runs in the
 background, and automatically registers itself as a startup program. From
@@ -26,7 +26,7 @@ when they restarted their computers.
 ## demo
 
 <img src="/assets/img/0.png" width="70%"><br/>
-Start **keyboardlogger**.
+Start **KeyLog**.
 <br/><br/>
 
 
