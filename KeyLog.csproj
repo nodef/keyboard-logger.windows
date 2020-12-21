@@ -51,9 +51,6 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Octokit, Version=0.48.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Octokit.0.48.0\lib\net46\Octokit.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
@@ -69,9 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Http.cs" />
-    <Compile Include="Common\KbdChar.cs" />
-    <Compile Include="Common\KbdHook.cs" />
-    <Compile Include="Common\Log.cs" />
+    <Compile Include="Common\KeyChar.cs" />
+    <Compile Include="Common\KeyHook.cs" />
     <Compile Include="Common\Octokit.cs" />
     <Compile Include="Common\Smtp.cs" />
     <Compile Include="MainForm.cs">
@@ -105,7 +101,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

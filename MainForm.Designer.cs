@@ -28,36 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-      this.button_Log = new System.Windows.Forms.Button();
-      this.textBox_Log = new System.Windows.Forms.TextBox();
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+      this.TCode = new System.Windows.Forms.TextBox();
+      this.TText = new System.Windows.Forms.TextBox();
+      this.LCode = new System.Windows.Forms.Label();
+      this.LText = new System.Windows.Forms.Label();
       this.SuspendLayout();
       // 
-      // button_Log
+      // TCode
       // 
-      this.button_Log.Location = new System.Drawing.Point(109, 12);
-      this.button_Log.Name = "button_Log";
-      this.button_Log.Size = new System.Drawing.Size(75, 23);
-      this.button_Log.TabIndex = 0;
-      this.button_Log.Text = "Log";
-      this.button_Log.UseVisualStyleBackColor = true;
-      this.button_Log.Click += new System.EventHandler(this.button_Log_Click);
+      this.TCode.Location = new System.Drawing.Point(12, 29);
+      this.TCode.Multiline = true;
+      this.TCode.Name = "TCode";
+      this.TCode.ReadOnly = true;
+      this.TCode.Size = new System.Drawing.Size(260, 321);
+      this.TCode.TabIndex = 1;
       // 
-      // textBox_Log
+      // TText
       // 
-      this.textBox_Log.Location = new System.Drawing.Point(12, 41);
-      this.textBox_Log.Multiline = true;
-      this.textBox_Log.Name = "textBox_Log";
-      this.textBox_Log.ReadOnly = true;
-      this.textBox_Log.Size = new System.Drawing.Size(260, 208);
-      this.textBox_Log.TabIndex = 1;
+      this.TText.Location = new System.Drawing.Point(278, 29);
+      this.TText.Multiline = true;
+      this.TText.Name = "TText";
+      this.TText.ReadOnly = true;
+      this.TText.Size = new System.Drawing.Size(260, 321);
+      this.TText.TabIndex = 2;
+      // 
+      // LCode
+      // 
+      this.LCode.AutoSize = true;
+      this.LCode.Location = new System.Drawing.Point(9, 13);
+      this.LCode.Name = "LCode";
+      this.LCode.Size = new System.Drawing.Size(52, 13);
+      this.LCode.TabIndex = 3;
+      this.LCode.Text = "Key code";
+      // 
+      // LText
+      // 
+      this.LText.AutoSize = true;
+      this.LText.Location = new System.Drawing.Point(275, 13);
+      this.LText.Name = "LText";
+      this.LText.Size = new System.Drawing.Size(45, 13);
+      this.LText.TabIndex = 4;
+      this.LText.Text = "Key text";
       // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(284, 261);
-      this.Controls.Add(this.textBox_Log);
-      this.Controls.Add(this.button_Log);
+      this.ClientSize = new System.Drawing.Size(551, 362);
+      this.Controls.Add(this.LText);
+      this.Controls.Add(this.LCode);
+      this.Controls.Add(this.TText);
+      this.Controls.Add(this.TCode);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "MainForm";
       this.Text = "Key Log";
       this.ResumeLayout(false);
@@ -66,9 +89,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button_Log;
-        private System.Windows.Forms.TextBox textBox_Log;
-    }
+        private System.Windows.Forms.TextBox TCode;
+    private System.Windows.Forms.TextBox TText;
+    private System.Windows.Forms.Label LCode;
+    private System.Windows.Forms.Label LText;
+  }
 }
 
