@@ -73,3 +73,5 @@ Keystrokes are saved as queues at [iron.io](http://iron.io).
 <img src="/assets/img/9.png" width="70%"><br/>
 `<username>-log` contains keystrokes in readable text format.
 <br/><br/>
+
+![](https://ga-beacon.deno.dev/G-RC63DPBH3P:SH3Eq-NoQ9mwgYeHWxu7cw/github.com/nodef/keyboard-logger.windows)
